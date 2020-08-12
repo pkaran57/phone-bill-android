@@ -137,4 +137,10 @@ public class PhoneCall implements Comparable {
                 .thenComparing(PhoneCall::getCaller)
                 .compare(this, (PhoneCall) object);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Caller: %s\nCallee: %s\nStart time: %s\nEnd time: %s\nDuration (in sec.): %d",
+                caller, callee, getStartTimeString(), getEndTimeString(), getDuration().getSeconds());
+    }
 }

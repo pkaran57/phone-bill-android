@@ -1,15 +1,14 @@
 package edu.pdx.cs410j.pkaran.phonebill.app.activity;
 
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import edu.pdx.cs410j.pkaran.phonebill.R;
 import edu.pdx.cs410j.pkaran.phonebill.app.db.phonecall.PhoneCall;
-import edu.pdx.cs410j.pkaran.phonebill.app.utils.PrettyPrinter;
 import edu.pdx.cs410j.pkaran.phonebill.app.viewmodels.ShowAllPhoneCallsViewModal;
 
 import java.util.List;
@@ -38,24 +37,36 @@ public class ShowAllPhoneCallsActivity extends AppCompatActivity {
 
         Button searchPhoneBillButton = findViewById(R.id.search_phone_bill_button);
         EditText customerNameEditText = findViewById(R.id.customer_name_input_2);
-        TextView showAllPhoneCallsTextView = findViewById(R.id.show_all_phone_calls_text_view);
-
-        showAllPhoneCallsTextView.setMovementMethod(new ScrollingMovementMethod());
-        showAllPhoneCallsTextView.setHorizontallyScrolling(true);
+        ListView phoneCallsListVew = findViewById(R.id.phone_calls_list);
 
         searchPhoneBillButton.setOnClickListener(view -> {
             String customerName = customerNameEditText.getText().toString();
 
             if(customerName.isEmpty()) {
-                showErrorToast(this, "Customer Name cannot be empty");
+                showErrorToast(this, "Customer name cannot be empty");
                 return;
             }
 
-            List<PhoneCall> phoneCallsForCustomer;
+            String[] items;
             try {
-                phoneCallsForCustomer = viewModal.getPhoneCallsForCustomer(customerName);
-                String dump = PrettyPrinter.dump(phoneCallsForCustomer);
-                showAllPhoneCallsTextView.setText(dump);
+                if(!viewModal.phoneBillExist(customerName)) {
+                    items = new String[]{String.format("No Phone bill found for customer %s", customerName)};
+                }
+                else {
+                    List<PhoneCall> phoneCallsForCustomer = viewModal.getPhoneCallsForCustomer(customerName);
+
+                    if(phoneCallsForCustomer.isEmpty()) {
+                        items = new String[]{String.format("No Phone calls found in phone bill for customer %s", customerName)};
+                    } else {
+                        items = phoneCallsForCustomer.stream().map(PhoneCall::toString).toArray(String[]::new);
+                    }
+                }
+
+                ArrayAdapter adapter = new ArrayAdapter<>(this,
+                        R.layout.phone_calls_listview,
+                        items);
+
+                phoneCallsListVew.setAdapter(adapter);
             } catch (Exception e) {
                 showErrorToast(this, e.getMessage());
             }
