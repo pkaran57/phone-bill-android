@@ -1,4 +1,4 @@
-package edu.pdx.cs410j.pkaran.phonebill.app.db;
+package edu.pdx.cs410j.pkaran.phonebill.app.db.phonebill;
 
 import android.app.Application;
 

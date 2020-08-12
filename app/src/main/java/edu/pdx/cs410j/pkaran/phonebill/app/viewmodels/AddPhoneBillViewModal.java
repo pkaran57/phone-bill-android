@@ -2,7 +2,7 @@ package edu.pdx.cs410j.pkaran.phonebill.app.viewmodels;
 
 import android.app.Application;
 import androidx.lifecycle.ViewModel;
-import edu.pdx.cs410j.pkaran.phonebill.app.db.PhoneBillRepository;
+import edu.pdx.cs410j.pkaran.phonebill.app.db.phonebill.PhoneBillRepository;
 
 import java.util.concurrent.ExecutionException;
 

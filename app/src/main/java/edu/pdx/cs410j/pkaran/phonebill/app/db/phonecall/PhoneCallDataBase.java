@@ -1,27 +1,28 @@
-package edu.pdx.cs410j.pkaran.phonebill.app.db;
+package edu.pdx.cs410j.pkaran.phonebill.app.db.phonecall;
 
 import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import edu.pdx.cs410j.pkaran.phonebill.app.db.phonebill.PhoneBill;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {PhoneBill.class}, version = 1)
-public abstract class PhoneBillDataBase extends RoomDatabase {
-    public abstract PhoneBillDAO phoneBillDAO();
+@Database(entities = {PhoneCall.class, PhoneBill.class}, version = 1)
+public abstract class PhoneCallDataBase extends RoomDatabase {
+    public abstract PhoneCallDAO phoneCallDAO();
 
-    private static PhoneBillDataBase INSTANCE;
+    private static PhoneCallDataBase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    public static PhoneBillDataBase getPhoneBillDataBase(Context context) {
+    public static PhoneCallDataBase getPhoneCallDataBase(Context context) {
         if(INSTANCE == null) {
-            synchronized (PhoneBillDataBase.class) {
+            synchronized (PhoneCallDataBase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            PhoneBillDataBase.class, "phone_bill_database")
+                            PhoneCallDataBase.class, "phone_call_database")
                             .build();
                 }
             }
