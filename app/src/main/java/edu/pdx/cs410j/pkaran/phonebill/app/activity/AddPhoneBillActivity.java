@@ -28,7 +28,6 @@ public class AddPhoneBillActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_phone_bill);
 
-        // get ViewModel and populate it in case of app being stopped by OS
         viewModal = getAddPhoneBillViewModal();
 
         Button createPhoneBillButton = findViewById(R.id.create_phone_bill_button);

@@ -12,37 +12,37 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editTextTextPersonName5"
+            android:id="@+id/end_edit_text"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="44dp"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4"
-            android:hint="02/27/2020 10:27 am" app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintTop_toBottomOf="@+id/start_edit_text"
+            android:hint="02/27/2020 10:27 am" app:layout_constraintBottom_toTopOf="@+id/add_phone_call_to_phone_bill_button"
             app:layout_constraintVertical_bias="0.15"/>
     <TextView
             android:text="End"
             android:layout_width="97dp"
             android:layout_height="44dp" android:id="@+id/textView6"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName5"
+            app:layout_constraintEnd_toStartOf="@+id/end_edit_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.28"
             app:layout_constraintVertical_bias="0.148" app:layout_constraintTop_toBottomOf="@+id/textView5"
-            app:layout_constraintBottom_toTopOf="@+id/button"/>
+            app:layout_constraintBottom_toTopOf="@+id/add_phone_call_to_phone_bill_button"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/start_edit_text"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="44dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.038"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" android:hint="02/27/2020 8:56 am"/>
+            app:layout_constraintTop_toBottomOf="@+id/callee_edit_text" android:hint="02/27/2020 8:56 am"/>
     <TextView
             android:text="Start"
             android:layout_width="97dp"
             android:layout_height="44dp" android:id="@+id/textView5"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName4"
+            app:layout_constraintEnd_toStartOf="@+id/start_edit_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.298"
             app:layout_constraintVertical_bias="0.04" app:layout_constraintTop_toBottomOf="@+id/textView3"/>
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/phone_bill_customer_name_edit_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="156dp"
@@ -71,37 +71,37 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/caller_edit_text"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="44dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.098"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" android:hint="XXX-XXX-XXXX"/>
+            app:layout_constraintTop_toBottomOf="@+id/phone_bill_customer_name_edit_text" android:hint="XXX-XXX-XXXX"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/callee_edit_text"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="44dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.046"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" android:hint="XXX-XXX-XXXX"/>
+            app:layout_constraintTop_toBottomOf="@+id/caller_edit_text" android:hint="XXX-XXX-XXXX"/>
     <TextView
             android:text="Caller #"
             android:layout_width="128dp"
             android:layout_height="42dp" android:id="@+id/textView"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintEnd_toStartOf="@+id/caller_edit_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.646"
             app:layout_constraintVertical_bias="0.098"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"/>
+            app:layout_constraintTop_toBottomOf="@+id/phone_bill_customer_name_edit_text"/>
     <TextView
             android:text="Callee #"
             android:layout_width="130dp"
             android:layout_height="48dp" android:id="@+id/textView3"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintEnd_toStartOf="@+id/caller_edit_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.625"
             app:layout_constraintVertical_bias="0.046" app:layout_constraintTop_toBottomOf="@+id/textView"/>
@@ -109,7 +109,7 @@
             android:text="Add Phone Call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/add_phone_call_to_phone_bill_button"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.777"/>
