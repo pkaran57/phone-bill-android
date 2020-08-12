@@ -9,7 +9,7 @@ import edu.pdx.cs410j.pkaran.phonebill.app.db.phonebill.PhoneBill;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {PhoneCall.class, PhoneBill.class}, version = 1)
+@Database(entities = {PhoneCall.class, PhoneBill.class}, version = 1, exportSchema = false)
 public abstract class PhoneCallDataBase extends RoomDatabase {
     public abstract PhoneCallDAO phoneCallDAO();
 

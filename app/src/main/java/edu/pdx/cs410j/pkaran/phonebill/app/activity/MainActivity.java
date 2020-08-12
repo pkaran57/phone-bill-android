@@ -8,8 +8,6 @@ import edu.pdx.cs410j.pkaran.phonebill.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int ADD_PHONE_BILL_CODE = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +18,12 @@ public class MainActivity extends AppCompatActivity {
 
         addPhoneBillButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, AddPhoneBillActivity.class);
-            startActivityForResult(intent, ADD_PHONE_BILL_CODE);
+            startActivity(intent);
+        });
+
+        addPhoneCallButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AddPhoneCallActivity.class);
+            startActivity(intent);
         });
     }
 }
