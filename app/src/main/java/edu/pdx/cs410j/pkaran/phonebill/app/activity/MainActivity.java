@@ -1,9 +1,9 @@
-package edu.pdx.cs410j.pkaran.phonebill.activity;
+package edu.pdx.cs410j.pkaran.phonebill.app.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import edu.pdx.cs410j.pkaran.phonebill.R;
 
 public class MainActivity extends AppCompatActivity {

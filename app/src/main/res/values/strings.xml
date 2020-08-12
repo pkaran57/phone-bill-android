@@ -2,4 +2,6 @@
     <string name="app_name">Phone Bill App</string>
     <string name="phone_bill_button_text">Add Phone Bill</string>
     <string name="add_phone_call_button">Add Phone Call</string>
+    <string name="customer_name_text">Customer Name</string>
+    <string name="add_phone_bill_prompt">Enter Customer Name for Phone Bill</string>
 </resources>
