@@ -22,4 +22,9 @@ public class PhoneBillRepository {
 
         future.get();
     }
+
+    public PhoneBill findPhoneBill(String customerName) throws ExecutionException, InterruptedException {
+        Future<?> future = PhoneBillDataBase.databaseWriteExecutor.submit(() -> phoneBillDAO.findByName(customerName));
+        return (PhoneBill) future.get();
+    }
 }

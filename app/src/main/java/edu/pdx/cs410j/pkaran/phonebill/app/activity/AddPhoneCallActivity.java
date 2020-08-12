@@ -83,7 +83,11 @@ public class AddPhoneCallActivity extends AppCompatActivity {
             PhoneCall phoneCall = new PhoneCall(customer, caller, callee, startDate, endDate);
 
             try {
-                viewModal.addPhoneCall(phoneCall);
+                boolean newPhoneBillCreated = viewModal.addPhoneCall(phoneCall);
+                String message = newPhoneBillCreated ? "SUCCESS: Created a new phone bill for customer and added phone call to it." :
+                        "SUCCESS: Added phone call to the existing phone bill for customer.";
+
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 showErrorToast(e.getMessage());
             }
