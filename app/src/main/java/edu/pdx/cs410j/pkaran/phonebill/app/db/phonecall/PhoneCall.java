@@ -10,9 +10,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Entity
 public class PhoneCall implements Comparable {
@@ -142,5 +145,17 @@ public class PhoneCall implements Comparable {
     public String toString() {
         return String.format("Caller: %s\nCallee: %s\nStart time: %s\nEnd time: %s\nDuration (in sec.): %d",
                 caller, callee, getStartTimeString(), getEndTimeString(), getDuration().getSeconds());
+    }
+
+    public static List<PhoneCall> getPhoneCallsBetween(Date startDateTime, Date endDateTime, List<PhoneCall> phoneCallList) {
+        Collections.sort(phoneCallList);
+
+        List<PhoneCall> callsInBetweenList = phoneCallList.stream()
+                .filter(phoneCall -> phoneCall.getStartTime().after(startDateTime) && phoneCall.getStartTime().before(endDateTime))
+                .collect(Collectors.toList());
+
+        Collections.sort(callsInBetweenList);
+
+        return callsInBetweenList;
     }
 }

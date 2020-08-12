@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         Button addPhoneBillButton = findViewById(R.id.add_phone_bill_button);
         Button addPhoneCallButton = findViewById(R.id.add_phone_call_button);
         Button viewPhoneBillButton = findViewById(R.id.view_phone_bill_button);
+        Button searchPhoneCallsButton = findViewById(R.id.search_phone_calls_button);
 
         addPhoneBillButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, AddPhoneBillActivity.class);
@@ -29,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
         viewPhoneBillButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, ShowAllPhoneCallsActivity.class);
+            startActivity(intent);
+        });
+
+        searchPhoneCallsButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, SearchPhoneCallsActivity.class);
             startActivity(intent);
         });
     }
