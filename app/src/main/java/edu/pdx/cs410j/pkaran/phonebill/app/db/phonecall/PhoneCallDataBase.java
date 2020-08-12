@@ -4,12 +4,11 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import edu.pdx.cs410j.pkaran.phonebill.app.db.phonebill.PhoneBill;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {PhoneCall.class, PhoneBill.class}, version = 1, exportSchema = false)
+@Database(entities = {PhoneCall.class}, version = 1, exportSchema = false)
 public abstract class PhoneCallDataBase extends RoomDatabase {
     public abstract PhoneCallDAO phoneCallDAO();
 

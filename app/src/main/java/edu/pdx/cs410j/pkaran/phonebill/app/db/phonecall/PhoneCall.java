@@ -1,15 +1,23 @@
 package edu.pdx.cs410j.pkaran.phonebill.app.db.phonecall;
 
 import androidx.annotation.NonNull;
-import androidx.room.*;
-import edu.pdx.cs410j.pkaran.phonebill.app.db.phonebill.PhoneBill;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
 
-@Entity(foreignKeys = @ForeignKey(entity = PhoneBill.class,
-        parentColumns = "customer_name",
-        childColumns = "customer_name"))
+@Entity
 public class PhoneCall {
+
+    //example:  01/02/2020 9:16 pm
+    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("M/d/yyyy h:m a");
+    private static final DateFormat DATE_FORMAT = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -43,6 +51,41 @@ public class PhoneCall {
         this.callee = callee;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    /**
+     * Check if the phone number is valid
+     * @param phoneNumber phone number to check
+     * @return true if valid, false otherwise
+     */
+    public static boolean isValidPhoneNumber(String phoneNumber) {
+        return phoneNumber != null && Pattern.matches("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d", phoneNumber);
+    }
+
+    /**
+     * Check if the timestamp is valid
+     * @param timestamp timestamp to check
+     * @return true if valid, false otherwise
+     */
+    public static boolean isTimeStampValid(String timestamp) {
+        return parseTimeStamp(timestamp) != null;
+    }
+
+    /**
+     * Parse timestamp into Date
+     * @param timestamp timestamp to parse
+     * @return parsed Date, if error encountered during parsing, null is returned
+     */
+    public static Date parseTimeStamp(String timestamp) {
+        if (timestamp == null) {
+            return null;
+        }
+
+        try {
+            return SIMPLE_DATE_FORMAT.parse(timestamp);
+        } catch (ParseException dateTimeParseException) {
+            return null;
+        }
     }
 
     public String getCaller() {
