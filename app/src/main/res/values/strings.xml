@@ -4,4 +4,10 @@
     <string name="add_phone_call_button">Add Phone Call</string>
     <string name="customer_name_text">Customer Name</string>
     <string name="add_phone_bill_prompt">Enter Customer Name for Phone Bill</string>
+    <string name="read_me_text">This is an app to manage phone bills for customers. Phone bills can contain multiple phone calls. Following are the supported features:
+    \n\n1. Add Customer Phone Bill
+    \n2. Add Phone Calls to Customer Phone Bill
+    \n3. Search for all Phone Calls in a Phone Bill
+    \n4. Search for Phone Calls between two times in a Phone Bill
+    \n\nThis app has been written by Karan Patel.</string>
 </resources>
