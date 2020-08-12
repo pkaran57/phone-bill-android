@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">PhoneBillApp</string>
+    <string name="app_name">Phone Bill App</string>
+    <string name="phone_bill_button_text">Add Phone Bill</string>
+    <string name="add_phone_call_button">Add Phone Call</string>
 </resources>
