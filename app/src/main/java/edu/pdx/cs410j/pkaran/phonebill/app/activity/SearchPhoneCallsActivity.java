@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 import static edu.pdx.cs410j.pkaran.phonebill.app.db.phonecall.PhoneCall.*;
-import static edu.pdx.cs410j.pkaran.phonebill.app.utils.ToastUtil.showErrorToast;
+import static edu.pdx.cs410j.pkaran.phonebill.app.utils.DialogueUtils.showErrorDialogue;
 
 public class SearchPhoneCallsActivity extends AppCompatActivity {
 
@@ -54,7 +54,7 @@ public class SearchPhoneCallsActivity extends AppCompatActivity {
             String endString = endEditText.getText().toString();
 
             if(customerName.isEmpty()) {
-                showErrorToast(this, "Customer name cannot be empty");
+                showErrorDialogue(this, "Customer name cannot be empty");
                 return;
             }
 
@@ -62,7 +62,7 @@ public class SearchPhoneCallsActivity extends AppCompatActivity {
             if (isTimeStampValid(startString)) {
                 startDate = parseTimeStamp(startString);
             } else {
-                showErrorToast(this, String.format("Start time is invalid. It should be in the following format: 'mm/dd/yyyy hh:mm am/pm' but got %s", startString));
+                showErrorDialogue(this, String.format("Start time is invalid. It should be in the following format: 'mm/dd/yyyy hh:mm am/pm' but got %s", startString));
                 return;
             }
 
@@ -70,7 +70,7 @@ public class SearchPhoneCallsActivity extends AppCompatActivity {
             if (isTimeStampValid(endString)) {
                 endDate = parseTimeStamp(endString);
             } else {
-                showErrorToast(this, String.format("End time is invalid. It should be in the following format: 'mm/dd/yyyy hh:mm am/pm' but got %s", endString));
+                showErrorDialogue(this, String.format("End time is invalid. It should be in the following format: 'mm/dd/yyyy hh:mm am/pm' but got %s", endString));
                 return;
             }
 
@@ -101,7 +101,7 @@ public class SearchPhoneCallsActivity extends AppCompatActivity {
 
                 phoneCallsListVew.setAdapter(adapter);
             } catch (Exception e) {
-                showErrorToast(this, e.getMessage());
+                showErrorDialogue(this, e.getMessage());
             }
         });
     }

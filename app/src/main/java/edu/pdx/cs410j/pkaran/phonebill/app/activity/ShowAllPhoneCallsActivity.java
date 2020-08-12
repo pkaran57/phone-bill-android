@@ -17,7 +17,7 @@ import edu.pdx.cs410j.pkaran.phonebill.app.viewmodels.ShowAllPhoneCallsViewModal
 
 import java.util.List;
 
-import static edu.pdx.cs410j.pkaran.phonebill.app.utils.ToastUtil.showErrorToast;
+import static edu.pdx.cs410j.pkaran.phonebill.app.utils.DialogueUtils.showErrorDialogue;
 
 public class ShowAllPhoneCallsActivity extends AppCompatActivity {
 
@@ -47,7 +47,7 @@ public class ShowAllPhoneCallsActivity extends AppCompatActivity {
             String customerName = customerNameEditText.getText().toString();
 
             if(customerName.isEmpty()) {
-                showErrorToast(this, "Customer name cannot be empty");
+                showErrorDialogue(this, "Customer name cannot be empty");
                 return;
             }
 
@@ -72,7 +72,7 @@ public class ShowAllPhoneCallsActivity extends AppCompatActivity {
 
                 phoneCallsListVew.setAdapter(adapter);
             } catch (Exception e) {
-                showErrorToast(this, e.getMessage());
+                showErrorDialogue(this, e.getMessage());
             }
         });
     }

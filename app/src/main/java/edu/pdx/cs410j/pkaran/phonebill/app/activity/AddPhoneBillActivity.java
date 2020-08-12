@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import edu.pdx.cs410j.pkaran.phonebill.R;
+import edu.pdx.cs410j.pkaran.phonebill.app.utils.DialogueUtils;
 import edu.pdx.cs410j.pkaran.phonebill.app.viewmodels.AddPhoneBillViewModal;
 
 public class AddPhoneBillActivity extends AppCompatActivity {
@@ -41,7 +42,7 @@ public class AddPhoneBillActivity extends AppCompatActivity {
             String customerName = customerNameEditText.getText().toString();
 
             if(customerName.isEmpty()) {
-                Toast.makeText(this, "Please enter name of the customer", Toast.LENGTH_SHORT).show();
+                DialogueUtils.showErrorDialogue(this, "Please enter name of the customer");
                 return;
             }
 
@@ -49,7 +50,7 @@ public class AddPhoneBillActivity extends AppCompatActivity {
                 viewModal.addPhoneBill(customerName);
             } catch (Exception exception) {
                 if(exception.getCause() != null && exception.getCause() instanceof SQLiteConstraintException) {
-                    Toast.makeText(this, "Phone bill for this customer already exist", Toast.LENGTH_SHORT).show();
+                    DialogueUtils.showErrorDialogue(this, "Phone bill for this customer already exist");
                     return;
                 } else {
                     throw new RuntimeException(exception);
