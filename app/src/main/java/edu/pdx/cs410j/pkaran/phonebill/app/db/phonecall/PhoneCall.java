@@ -151,7 +151,8 @@ public class PhoneCall implements Comparable {
         Collections.sort(phoneCallList);
 
         List<PhoneCall> callsInBetweenList = phoneCallList.stream()
-                .filter(phoneCall -> phoneCall.getStartTime().after(startDateTime) && phoneCall.getStartTime().before(endDateTime))
+                .filter(phoneCall -> (phoneCall.getStartTime().equals(startDateTime) || phoneCall.getStartTime().after(startDateTime))
+                                  && (phoneCall.getStartTime().equals(endDateTime) || phoneCall.getStartTime().before(endDateTime)))
                 .collect(Collectors.toList());
 
         Collections.sort(callsInBetweenList);
