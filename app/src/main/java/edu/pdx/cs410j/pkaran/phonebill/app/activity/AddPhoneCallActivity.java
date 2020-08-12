@@ -13,6 +13,7 @@ import edu.pdx.cs410j.pkaran.phonebill.app.viewmodels.AddPhoneCallViewModal;
 import java.util.Date;
 
 import static edu.pdx.cs410j.pkaran.phonebill.app.db.phonecall.PhoneCall.*;
+import static edu.pdx.cs410j.pkaran.phonebill.app.utils.ToastUtil.showErrorToast;
 
 public class AddPhoneCallActivity extends AppCompatActivity {
 
@@ -50,17 +51,17 @@ public class AddPhoneCallActivity extends AppCompatActivity {
             String endString = endEditText.getText().toString();
 
             if(customer.isEmpty()) {
-                showErrorToast("Customer Name cannot be empty");
+                showErrorToast(this, "Customer Name cannot be empty");
                 return;
             }
 
             if (!isValidPhoneNumber(caller)) {
-                showErrorToast(String.format("Caller phone number is invalid. Phone numbers should have the form nnn-nnn-nnnn where n is a number 0-9 but got %s", caller));
+                showErrorToast(this, String.format("Caller phone number is invalid. Phone numbers should have the form nnn-nnn-nnnn where n is a number 0-9 but got %s", caller));
                 return;
             }
 
             if (!isValidPhoneNumber(callee)) {
-                showErrorToast(String.format("Callee phone number is invalid. Phone numbers should have the form nnn-nnn-nnnn where n is a number 0-9 but got %s", caller));
+                showErrorToast(this, String.format("Callee phone number is invalid. Phone numbers should have the form nnn-nnn-nnnn where n is a number 0-9 but got %s", caller));
                 return;
             }
 
@@ -68,7 +69,7 @@ public class AddPhoneCallActivity extends AppCompatActivity {
             if (isTimeStampValid(startString)) {
                 startDate = parseTimeStamp(startString);
             } else {
-                showErrorToast(String.format("Start time is invalid. It should be in the following format: 'mm/dd/yyyy hh:mm am/pm' but got %s", startString));
+                showErrorToast(this, String.format("Start time is invalid. It should be in the following format: 'mm/dd/yyyy hh:mm am/pm' but got %s", startString));
                 return;
             }
 
@@ -76,7 +77,7 @@ public class AddPhoneCallActivity extends AppCompatActivity {
             if (isTimeStampValid(endString)) {
                 endDate = parseTimeStamp(endString);
             } else {
-                showErrorToast(String.format("End time is invalid. It should be in the following format: 'mm/dd/yyyy hh:mm am/pm' but got %s", endString));
+                showErrorToast(this, String.format("End time is invalid. It should be in the following format: 'mm/dd/yyyy hh:mm am/pm' but got %s", endString));
                 return;
             }
 
@@ -89,12 +90,8 @@ public class AddPhoneCallActivity extends AppCompatActivity {
 
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-                showErrorToast(e.getMessage());
+                showErrorToast(this, e.getMessage());
             }
         });
-    }
-
-    private void showErrorToast(String message) {
-        Toast.makeText(this, "Error: " + message, Toast.LENGTH_SHORT).show();
     }
 }

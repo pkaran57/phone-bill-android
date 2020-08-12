@@ -9,11 +9,13 @@ import androidx.room.TypeConverters;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.regex.Pattern;
 
 @Entity
-public class PhoneCall {
+public class PhoneCall implements Comparable {
 
     //example:  01/02/2020 9:16 pm
     private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("M/d/yyyy h:m a");
@@ -114,5 +116,25 @@ public class PhoneCall {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getStartTimeString() {
+        return DATE_FORMAT.format(startTime);
+    }
+
+    public String getEndTimeString() {
+        return DATE_FORMAT.format(endTime);
+    }
+
+    public Duration getDuration() {
+        return Duration.between(startTime.toInstant(), endTime.toInstant());
+    }
+
+    @Override
+    public int compareTo(Object object) {
+        return Comparator
+                .comparing(PhoneCall::getStartTime)
+                .thenComparing(PhoneCall::getCaller)
+                .compare(this, (PhoneCall) object);
     }
 }
